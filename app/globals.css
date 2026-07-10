@@ -77,13 +77,16 @@
 }
 
 /*
-  Component/utility helper classes below are authored so they never fight
-  Tailwind utilities placed on the same element:
-  - typography helpers use `margin-block` (never `margin`) so `mx-auto`
-    and horizontal-margin utilities still apply;
-  - `.ph` carries only visual decoration (no `position`/`display`), so the
-    ImagePlaceholder component owns positioning via utilities.
+  Custom helper classes below live in @layer components, which Tailwind
+  pre-declares to sit BEFORE its utilities layer — so any Tailwind utility
+  placed on the same element (e.g. `fine max-[640px]:text-[9px]`,
+  `display-lg mx-auto`, `ph absolute inset-0`) always wins the cascade,
+  regardless of source order. Never leave these rules unlayered: unlayered
+  CSS outranks every @layer, including Tailwind's utilities layer, so an
+  unlayered `.fine { font-size: … }` would always beat a `text-[9px]`
+  utility no matter which one appears later in the file.
 */
+@layer components {
 
 /* ---- Typography helpers ---- */
 .display-lg {
@@ -177,3 +180,5 @@
   background-clip: text;
   color: transparent;
 }
+
+} /* @layer components */

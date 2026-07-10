@@ -83,9 +83,13 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 flex flex-wrap justify-between gap-4 border-t border-white/[.12] pt-6">
-          <span className="fine text-[#8C817A]">© 2026 Beny Kay · Consultora de Beleza Independente</span>
-          <span className="fine text-[#8C817A]">Feito com carinho ✦</span>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/[.12] pt-6 max-[640px]:flex-nowrap max-[640px]:justify-center max-[640px]:gap-2">
+          <span className="fine text-[#8C817A] max-[640px]:text-[9px] max-[640px]:tracking-normal max-[640px]:whitespace-nowrap">
+            © 2026 Beny Kay · Consultora de Beleza Independente
+          </span>
+          <span className="fine text-[#8C817A] max-[640px]:text-[9px] max-[640px]:tracking-normal max-[640px]:whitespace-nowrap">
+            Feito com carinho ✦
+          </span>
         </div>
       </Container>
     </footer>
