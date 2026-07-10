@@ -52,7 +52,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative max-[880px]:mx-auto max-[880px]:w-full max-[880px]:max-w-[440px]">
+        <div className="relative max-[880px]:mx-auto max-[880px]:w-full max-[880px]:max-w-[440px] max-[540px]:max-w-[320px]">
           <div className="absolute top-[22px] -right-[18px] -bottom-[18px] left-[22px] z-0 [border-radius:200px_200px_14px_14px] border border-rose-gold opacity-45" />
           <div className="absolute -left-[7%] top-[13%] z-5 flex items-center gap-3 rounded-lg border border-charcoal/[.07] bg-ivory px-[18px] py-3.5 shadow-md">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blush text-rose-gold-dp">

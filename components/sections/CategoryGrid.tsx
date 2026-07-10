@@ -23,7 +23,7 @@ export function CategoryGrid() {
             Ver catálogo completo →
           </a>
         </div>
-        <div className="grid grid-cols-4 gap-6 max-[980px]:grid-cols-2 max-[640px]:grid-cols-1">
+        <div className="grid grid-cols-4 gap-6 max-[980px]:grid-cols-2 max-[640px]:gap-4">
           {CATEGORIES.map((cat) => {
             const Icon = cat.icon;
             return (

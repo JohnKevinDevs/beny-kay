@@ -19,7 +19,7 @@ export function ProductGrid() {
             pela loja oficial — ou fale comigo para uma indicação sob medida.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-6 max-[980px]:grid-cols-2 max-[640px]:grid-cols-1">
+        <div className="grid grid-cols-3 gap-6 max-[980px]:grid-cols-2 max-[640px]:gap-4">
           {PRODUCTS.map((product) => (
             <ProductCard key={product.name} product={product} />
           ))}

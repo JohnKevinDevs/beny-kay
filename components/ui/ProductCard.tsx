@@ -22,16 +22,16 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
         <ImagePlaceholder icon={<Icon />} from={from} to={to} className="absolute inset-0" />
       </div>
-      <div className="flex flex-1 flex-col gap-[.55rem] px-5 pt-5 pb-[22px]">
+      <div className="flex flex-1 flex-col gap-[.55rem] px-5 pt-5 pb-[22px] max-[640px]:px-4 max-[640px]:pt-4 max-[640px]:pb-4">
         <span className="text-[.66rem] tracking-[.2em] text-muted uppercase">{category}</span>
-        <span className="font-display text-[1.18rem] leading-[1.2] font-medium">{name}</span>
+        <span className="font-display text-[1.18rem] leading-[1.2] font-medium max-[640px]:text-[1.04rem]">{name}</span>
         <Stars />
-        <div className="mt-auto flex items-center justify-between gap-3 pt-[.4rem]">
-          <span className="font-display text-[1.5rem] text-charcoal italic">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-2.5 pt-[.4rem]">
+          <span className="font-display text-[1.5rem] text-charcoal italic max-[640px]:text-[1.3rem]">
             {priceWhole}
             <small className="font-sans text-[.7rem] tracking-[.1em] text-muted not-italic">{priceCents}</small>
           </span>
-          <Button href={STORE_URL} variant="primary" size="sm">
+          <Button href={STORE_URL} variant="primary" size="sm" className="max-[520px]:w-full">
             Comprar
           </Button>
         </div>
