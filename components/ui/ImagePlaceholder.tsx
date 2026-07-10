@@ -15,8 +15,15 @@ export function ImagePlaceholder({ label, icon, variant = "default", from, to, c
   if (from) style["--ph-from"] = from;
   if (to) style["--ph-to"] = to;
 
+  // The .ph class carries no positioning; ensure exactly one position utility
+  // so a caller's `absolute inset-0` is never doubled up with a default.
+  const hasPosition = /(?:^|\s)(?:absolute|fixed|relative|sticky)(?:\s|$)/.test(className ?? "");
+
   return (
-    <div className={cn("ph", variant === "ink" && "ph--ink", className)} style={style}>
+    <div
+      className={cn("ph", !hasPosition && "relative", variant === "ink" && "ph--ink", className)}
+      style={style}
+    >
       {icon && <div className="ph-ico">{icon}</div>}
       {label && <span className="ph-label">{label}</span>}
     </div>

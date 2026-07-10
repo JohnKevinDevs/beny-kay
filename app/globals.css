@@ -8,6 +8,11 @@
   760px  - steps/value-prop grids -> 1-col
   640px  - all grids -> 1-col, nav links hidden
   540px  - final CTA field wraps
+
+  Custom classes live in @layer base / @layer components so Tailwind
+  utilities (which sit in the later `utilities` layer) can override them
+  when combined on the same element (e.g. `display-lg mx-auto`,
+  `ph absolute inset-0`).
 */
 
 @theme {
@@ -44,41 +49,50 @@
   }
 }
 
-body {
-  background: var(--color-cream);
-  color: var(--color-charcoal);
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 17px;
-  line-height: 1.7;
-  letter-spacing: 0.005em;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+@layer base {
+  body {
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-blush-deep);
+    color: var(--color-charcoal);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
 }
 
-::selection {
-  background: var(--color-blush-deep);
-  color: var(--color-charcoal);
-}
+/*
+  Component/utility helper classes below are authored so they never fight
+  Tailwind utilities placed on the same element:
+  - typography helpers use `margin-block` (never `margin`) so `mx-auto`
+    and horizontal-margin utilities still apply;
+  - `.ph` carries only visual decoration (no `position`/`display`), so the
+    ImagePlaceholder component owns positioning via utilities.
+*/
 
-/* ============================================================
-   Typography utilities
-   ============================================================ */
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 500;
-}
-
+/* ---- Typography helpers ---- */
 .display-lg {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(2.4rem, 4.6vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.01em;
-  margin: 0;
+  margin-block: 0;
 }
 .display-md {
   font-family: var(--font-display);
@@ -86,7 +100,7 @@ h4 {
   font-size: clamp(1.9rem, 3vw, 2.8rem);
   line-height: 1.08;
   letter-spacing: -0.005em;
-  margin: 0;
+  margin-block: 0;
 }
 .script {
   font-family: var(--font-display);
@@ -96,23 +110,15 @@ h4 {
 .lead {
   font-size: clamp(1.05rem, 1.4vw, 1.22rem);
   line-height: 1.7;
-  color: var(--color-charcoal-2);
   font-weight: 300;
 }
 .fine {
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--color-muted);
 }
 
-/* ============================================================
-   Image placeholders — "photo pending" slots (.ph / .ph--ink)
-   ============================================================ */
+/* ---- Image placeholders — "photo pending" slots ---- */
 .ph {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
   overflow: hidden;
   border: 1px solid rgba(198, 134, 119, 0.28);
   color: var(--color-rose-gold-dp);
@@ -126,7 +132,7 @@ h4 {
     repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 13px),
     linear-gradient(160deg, #3a3431, #27221f);
 }
-.ph .ph-ico {
+.ph-ico {
   position: absolute;
   inset: 0;
   display: flex;
@@ -134,7 +140,7 @@ h4 {
   justify-content: center;
   opacity: 0.5;
 }
-.ph .ph-ico svg {
+.ph-ico svg {
   width: 46px;
   height: 46px;
   stroke: var(--color-rose-gold-dp);
@@ -144,7 +150,10 @@ h4 {
 .ph--ink .ph-ico svg {
   stroke: var(--color-blush);
 }
-.ph .ph-label {
+.ph-label {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
   font: 400 0.66rem/1 var(--font-sans);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -153,7 +162,6 @@ h4 {
   border: 1px solid rgba(198, 134, 119, 0.3);
   border-radius: 9999px;
   padding: 0.4em 0.9em;
-  margin: 14px;
   backdrop-filter: blur(2px);
 }
 .ph--ink .ph-label {
@@ -162,9 +170,7 @@ h4 {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
-/* ============================================================
-   Foil gradient text
-   ============================================================ */
+/* ---- Foil gradient text ---- */
 .foil-text {
   background: linear-gradient(120deg, #f2ddd2 0%, #d08c73 42%, #c2705a 64%, #a4533e 100%);
   -webkit-background-clip: text;
