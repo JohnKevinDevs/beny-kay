@@ -24,18 +24,27 @@ export function CategoryGrid() {
           </a>
         </div>
         <div className="grid grid-cols-4 gap-6 max-[980px]:grid-cols-2 max-[640px]:grid-cols-1">
-          {CATEGORIES.map((cat) => (
-            <div
-              key={cat.label}
-              className="relative flex aspect-[3/4] items-end overflow-hidden rounded-md border border-charcoal/[.07]"
-            >
-              <ImagePlaceholder label={cat.label} from={cat.from} to={cat.to} className="absolute inset-0" />
-              <div className="relative z-2 w-full bg-[linear-gradient(to_top,rgba(28,24,22,.7),transparent)] p-[22px] text-ivory">
-                <span className="text-[.72rem] tracking-[.18em] uppercase opacity-85">{cat.index}</span>
-                <h3 className="m-0 text-[1.5rem] text-ivory">{cat.label}</h3>
-              </div>
-            </div>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <a
+                key={cat.label}
+                href="#produtos"
+                className="group relative flex aspect-[3/4] items-end overflow-hidden rounded-md border border-charcoal/[.07]"
+              >
+                <ImagePlaceholder
+                  icon={<Icon />}
+                  from={cat.from}
+                  to={cat.to}
+                  className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="relative z-2 w-full bg-[linear-gradient(to_top,rgba(28,24,22,.72),transparent)] p-[22px] text-ivory">
+                  <span className="text-[.72rem] tracking-[.18em] uppercase opacity-85">{cat.index}</span>
+                  <h3 className="m-0 text-[1.5rem] text-ivory">{cat.label}</h3>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </Container>
     </section>

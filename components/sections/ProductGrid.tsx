@@ -14,7 +14,7 @@ export function ProductGrid() {
             Seleção da consultora
           </Eyebrow>
           <h2 className="display-lg">Favoritos das clientes</h2>
-          <p className="lead mt-[18px]">
+          <p className="lead mt-[18px] text-charcoal-2">
             Uma vitrine dos produtos mais pedidos. Toque em <em className="script">comprar</em> para garantir o seu
             pela loja oficial — ou fale comigo para uma indicação sob medida.
           </p>

@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="absolute top-3 right-3 z-2 flex h-[38px] w-[38px] items-center justify-center rounded-full border border-charcoal/[.12] bg-ivory/90 text-rose-gold">
           <HeartIcon className="h-[18px] w-[18px]" />
         </div>
-        <ImagePlaceholder icon={<Icon />} label="Foto do produto" from={from} to={to} className="absolute inset-0" />
+        <ImagePlaceholder icon={<Icon />} from={from} to={to} className="absolute inset-0" />
       </div>
       <div className="flex flex-1 flex-col gap-[.55rem] px-5 pt-5 pb-[22px]">
         <span className="text-[.66rem] tracking-[.2em] text-muted uppercase">{category}</span>

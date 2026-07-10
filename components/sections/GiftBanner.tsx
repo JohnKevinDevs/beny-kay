@@ -17,7 +17,7 @@ export function GiftBanner() {
               <h2 className="display-lg text-cream">
                 Um presente que diz <FoilText as="span">eu te vejo.</FoilText>
               </h2>
-              <p className="lead mt-[22px] max-w-[42ch] text-[#D8CEC6]">
+              <p className="lead mt-[22px] max-w-[42ch] text-[#d8cec6]">
                 Monte uma seleção especial e eu cuido do embrulho. Aniversário, Dia das Mães, &ldquo;só porque
                 sim&rdquo; — beleza é sempre um carinho bem recebido.
               </p>

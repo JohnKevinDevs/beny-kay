@@ -10,7 +10,7 @@ export function About() {
   return (
     <section id="sobre" className="bg-cream-deep py-[clamp(64px,9vw,132px)]">
       <Container className="grid grid-cols-[.85fr_1.15fr] items-center gap-[clamp(34px,5vw,76px)] max-[880px]:grid-cols-1">
-        <div className="relative max-[880px]:mx-auto max-[880px]:max-w-[440px]">
+        <div className="relative max-[880px]:mx-auto max-[880px]:w-full max-[880px]:max-w-[440px]">
           <ImagePlaceholder
             icon={<PersonIcon />}
             label="Retrato — Beny Rodrigues"
@@ -32,7 +32,7 @@ export function About() {
             <br />
             e cuidado é <span className="script">pessoal.</span>
           </h2>
-          <p className="lead mt-[26px] max-w-[52ch]">
+          <p className="lead mt-[26px] max-w-[52ch] text-charcoal-2">
             Como Consultora de Beleza Independente, eu acompanho cada cliente de perto: entendo a sua pele, o seu
             estilo e o seu momento para indicar exatamente o que faz sentido pra você. Sem pressa, com verdade.
           </p>
